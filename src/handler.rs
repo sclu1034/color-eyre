@@ -85,19 +85,12 @@ impl eyre::EyreHandler for Handler {
             )?;
         }
 
-        for section in self
-            .sections
-            .iter()
-            .filter(|s| matches!(s, HelpInfo::Error(_, _)))
-        {
-            write!(separated.ready(), "{}", section)?;
-        }
-
-        for section in self
-            .sections
-            .iter()
-            .filter(|s| matches!(s, HelpInfo::Custom(_)))
-        {
+        for section in self.sections.iter().filter(|s| {
+            matches!(
+                s,
+                HelpInfo::Error(_, _) | HelpInfo::Report(_, _) | HelpInfo::Custom(_)
+            )
+        }) {
             write!(separated.ready(), "{}", section)?;
         }
 
@@ -135,11 +128,12 @@ impl eyre::EyreHandler for Handler {
         let mut h = f.header("\n");
         let mut f = h.in_progress();
 
-        for section in self
-            .sections
-            .iter()
-            .filter(|s| !matches!(s, HelpInfo::Custom(_) | HelpInfo::Error(_, _)))
-        {
+        for section in self.sections.iter().filter(|s| {
+            !matches!(
+                s,
+                HelpInfo::Custom(_) | HelpInfo::Error(_, _) | HelpInfo::Report(_, _)
+            )
+        }) {
             write!(&mut f, "{}", section)?;
             f = h.ready();
         }
