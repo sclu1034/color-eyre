@@ -342,7 +342,6 @@
     rust_2018_idioms,
     unreachable_pub,
     bad_style,
-    const_err,
     dead_code,
     improper_ctypes,
     non_shorthand_field_patterns,
@@ -369,7 +368,7 @@ pub use eyre::Report;
 #[doc(hidden)]
 pub use eyre::Result;
 pub use owo_colors;
-use section::help::HelpInfo;
+pub use section::help::HelpInfo;
 #[doc(hidden)]
 pub use section::Section as Help;
 pub use section::{IndentedSection, Section, SectionExt};

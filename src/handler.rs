@@ -17,6 +17,11 @@ impl std::fmt::Debug for Handler {
 }
 
 impl Handler {
+    /// Return a reference to the added sections
+    pub fn sections(&self) -> &Vec<HelpInfo> {
+        &self.sections
+    }
+
     /// Return a reference to the captured `Backtrace` type
     pub fn backtrace(&self) -> Option<&Backtrace> {
         self.backtrace.as_ref()
