@@ -249,11 +249,17 @@ where
     }
 }
 
-pub(crate) enum HelpInfo {
+/// The various types of sections that may be attached to a `Report`
+pub enum HelpInfo {
+    /// An error section
     Error(Box<dyn std::error::Error + Send + Sync + 'static>, Theme),
+    /// A custom section
     Custom(Box<dyn Display + Send + Sync + 'static>),
+    /// A note section
     Note(Box<dyn Display + Send + Sync + 'static>, Theme),
+    /// A warning section
     Warning(Box<dyn Display + Send + Sync + 'static>, Theme),
+    /// A suggestion section
     Suggestion(Box<dyn Display + Send + Sync + 'static>, Theme),
 }
 
