@@ -231,8 +231,10 @@ pub trait Section: crate::private::Sealed {
         F: FnOnce() -> E,
         E: std::error::Error + Send + Sync + 'static;
 
+    #[allow(missing_docs)]
     fn report(self, report: Report) -> Self::Return;
 
+    #[allow(missing_docs)]
     fn with_report<F>(self, report: F) -> Self::Return
     where
         F: FnOnce() -> Report;

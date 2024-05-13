@@ -11,6 +11,7 @@ use std::env;
 use std::fmt::Write as _;
 use std::{fmt, path::PathBuf, sync::Arc};
 
+#[allow(dead_code)]
 #[derive(Debug)]
 struct InstallError;
 
@@ -22,6 +23,7 @@ impl fmt::Display for InstallError {
 
 impl std::error::Error for InstallError {}
 
+#[allow(dead_code)]
 #[derive(Debug)]
 struct InstallThemeError;
 
@@ -33,6 +35,7 @@ impl fmt::Display for InstallThemeError {
 
 impl std::error::Error for InstallThemeError {}
 
+#[allow(dead_code)]
 #[derive(Debug)]
 struct InstallColorSpantraceThemeError;
 

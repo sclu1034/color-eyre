@@ -28,6 +28,7 @@ impl<W> WriterExt for W {
     }
 }
 
+#[allow(unused)]
 pub(crate) trait DisplayExt: Sized + Display {
     fn with_header<H: Display>(self, header: H) -> Header<Self, H>;
     fn with_footer<F: Display>(self, footer: F) -> Footer<Self, F>;
@@ -80,6 +81,7 @@ where
     }
 }
 
+#[allow(unused)]
 pub(crate) struct FooterWriter<W> {
     inner: W,
     had_output: bool,
@@ -98,7 +100,7 @@ where
     }
 }
 
-#[allow(explicit_outlives_requirements)]
+#[allow(explicit_outlives_requirements, dead_code)]
 pub(crate) struct Footer<B, H>
 where
     B: Display,
@@ -129,7 +131,7 @@ where
     }
 }
 
-#[allow(explicit_outlives_requirements)]
+#[allow(explicit_outlives_requirements, dead_code)]
 pub(crate) struct Header<B, H>
 where
     B: Display,
