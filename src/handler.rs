@@ -91,7 +91,7 @@ impl eyre::EyreHandler for Handler {
                 HelpInfo::Error(_, _) | HelpInfo::Report(_, _) | HelpInfo::Custom(_)
             )
         }) {
-            write!(separated.ready(), "{}", section)?;
+            write!(separated.ready(), "{section}")?;
         }
 
         #[cfg(feature = "capture-spantrace")]
@@ -118,8 +118,7 @@ impl eyre::EyreHandler for Handler {
                 write!(
                     indented(&mut separated.ready())
                         .with_format(Format::Uniform { indentation: "  " }),
-                    "{}",
-                    fmted_bt
+                    "{fmted_bt}"
                 )?;
             }
         }
@@ -134,7 +133,7 @@ impl eyre::EyreHandler for Handler {
                 HelpInfo::Custom(_) | HelpInfo::Error(_, _) | HelpInfo::Report(_, _)
             )
         }) {
-            write!(&mut f, "{}", section)?;
+            write!(&mut f, "{section}")?;
             f = h.ready();
         }
 
@@ -145,7 +144,7 @@ impl eyre::EyreHandler for Handler {
                 span_trace,
             };
 
-            write!(&mut separated.ready(), "{}", env_section)?;
+            write!(&mut separated.ready(), "{env_section}")?;
         }
 
         #[cfg(feature = "issue-url")]
